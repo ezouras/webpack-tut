@@ -1,0 +1,11 @@
+1/ component.service.js:1 Uncaught SyntaxError: Unexpected token 'export'
+inputs-are-valid.js:4 Uncaught SyntaxError: Unexpected token 'export'
+parse-inputs.js:1 Uncaught SyntaxError: Unexpected token 'export'
+
+1A/
+You are using ES6 Module syntax.
+This means your environment (e.g. node.js) must support ES6 Module syntax.
+NodeJS uses CommonJS Module syntax (module.exports) not ES6 module syntax (export keyword).
+
+installed babel and it worked after removing the "script" tags from
+the html file.  with the script tags it didn't work.

@@ -1,0 +1,71 @@
+https://webpack.js.org/
+Bundle all javascript files into one file indentifed in the html file
+thru the script tag.  it just needs that one file to build the app.
+
+thru imports and exports, javascript will know how to build the files
+and webpack will know how to add them to one file.
+
+
+
+1/ bundle code
+2/ manage dependencies.
+  need certain files to load first that are dependent on other files
+
+3/ default entry point for webpack is "index.js" in the src directory
+  Error you will receive when running webpack:
+  ERROR in main
+Module not found: Error: Can't resolve './src' in 'C:\SoftwareProjects\git\personalStuff\Webpack'
+
+* add index.js in "src" folder
+
+
+  4/ in package file:
+  "scripts": {
+    "start": "webpack"
+  },
+
+  >npm start
+
+  will create, by default, a dist folder with a main.js file.
+  everything from index.js will go into main js.
+  if you bring up the webpage and click on "sources", you will see
+  that everything other than the css and html is in ONE js file called "main.js"
+  in the dist folder
+
+  5/ to change default behavior (read index.js from src folder or output in main.js in dist folder)
+  you need to create a webpack config file
+  in this project we named this file 'webpack.config.js' but yo can call it
+  whatever you want
+
+  6/ in your package file you need to tell webpack to use
+  the config file:
+  "scripts": {
+    "start": "webpack --config webpack.config.js"
+  },
+
+  7/ If you change the output file using the webpack config file, be sure
+  to change the script file in the html file
+
+  8/ Mode is set to "production" by default so the minified file is
+  impossible to understand.  to change this,
+  add mode:"development"
+  in the webpack config file
+
+  9/ to make it even more readable (git rid of "eval") set
+  devtool (lowercase t) to none:
+  module.exports = {
+    mode: "development",
+    devtool: false,
+    entry: "./src/index.js",
+    output: {
+      filename: "main.js",
+      path: path.resolve(__dirname, "dist")
+    }
+
+  10/ the way webpack handles files other than javasript (css, pictures) is
+  thru loaders  . please read the "loaders" file
+
+  11/ installed bootstrap
+  npm install --save-dev bootstrap
+  Then you can remove from the html file, the import statement for bootstrap
+  see "bootstrap" file for the rest

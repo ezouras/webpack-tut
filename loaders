@@ -1,0 +1,49 @@
+https://webpack.js.org/loaders/
+https://webpack.js.org/concepts/loaders/#example
+
+1/ install the type of loader (depending on the file) you need.
+example we will use here is .css
+ie' we want webpack to handle and bundle the stylesheets
+
+a/ install the following:
+pick the loder from this file and follow instructions:
+https://webpack.js.org/loaders/
+
+npm install --save-dev style-loader
+https://webpack.js.org/loaders/style-loader/
+npm install --save-dev css-loader
+
+2/ in your webpack config file,
+you need to tell webpack which modules require which loaders
+Here is the basic frame:
+module: {
+  rules: [
+
+  ]
+}
+
+a/ here is the exact rule:
+module.exports = {
+  mode: "development",
+  devtool: false,
+  entry: "./src/index.js",
+  output: {
+    filename: "main.js",
+    path: path.resolve(__dirname, "dist")
+  }
+  module: {
+    rules: [{
+      test: /\.css$/i,
+      use: ['style-loader', 'css-loader'],
+    }, ]
+  }
+
+  it is using "regex" where /regex/
+  \. =  escape used so that it reads the dot
+  .css$  = use the loader on anything ending in .css
+
+  3/ whatever your "entry" file is (it is index.js in our case -
+  look at the html to know which one in yours; that file should match up
+  with whatever you have in the webpack config file),
+  import the .css file you want to use
+  
