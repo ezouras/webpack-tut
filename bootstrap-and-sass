@@ -7,7 +7,7 @@ Then you can remove from the html file, the import statement for bootstrap
 4/ load the sass loader:
 https://webpack.js.org/loaders/sass-loader/
 
-5/ add to entry file (index.js in our case)
+5/ add to webpack input file (index.js in our case)
 import "./main.scss";
 
 6/ import bootstram in the main.scss file:

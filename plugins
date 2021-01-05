@@ -1,0 +1,9 @@
+https://webpack.js.org/plugins/
+
+1/ for dynamically adding a main<hashtag> file in the html page,
+use HtmlWebpackPlugin
+examples how to use it:
+https://github.com/jantimon/html-webpack-plugin/blob/master/examples/html-loader/webpack.config.js
+
+
+2/

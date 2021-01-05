@@ -1,0 +1,52 @@
+1/ go to https://github.com/webpack/webpack
+a/ look at teh "network" tab in the chrome inspector
+b/ look at the "css" files
+c/ note there are two and look under "size"
+if you do a hard refresh - it goes to the server to get the fil
+if you do a soft refresh and look at size it shows "from disk cache"
+
+2/ the crazy array of numbers for each of the file names in the above
+is a "content hash" - that hash is based on what is in the file.
+the number changes if the data changes.
+md5 is a popular way to "hash"
+
+3/ the way to add your own content has to the file, so that it knows if the content has
+changed is in your webpack config file for the output:
+output: {
+  filename:"main.[contentHash].js",
+  path:....
+}
+
+if you are using a webpack version less than 4, use "chunkhash" insead of "contentHash"
+
+5/ remember, the html looks at that output file to know what js file to use.
+however, what filename should you use? you don't know what the hashtag will be.
+you need to use plugins
+  - you use an "htmlWebpackPlugin"
+go to the plugins page
+
+6/ Add the following import into the webpack config
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
+
+7/ add the following property into the exports object in your config file:
+plugins: [new HtmlWebpackPlugin()]
+* you can add as many plugins in the array as you need.
+
+By just running webpack, you will produce a index.html file in the
+dist folder.  it will have your js file but it wont have any of
+your html stuff. you need to tell wepack where to add
+the js file .
+
+8/ we created a "template.html" in the src directory
+with all the html code and removed the <script> tag entirely
+
+plugins: [new HtmlWebpackPlugin({
+  template: "./src/template.html"//what template to use when creating the index.html
+})],
+
+
+
+6/ also, everytime you make a change, a new main file iwth the hash tag is
+created.  and it gets cluttered. you also need a "cleaning" plugin for this as well
+  - go to the plugins page

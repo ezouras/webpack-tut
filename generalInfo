@@ -5,6 +5,18 @@ thru the script tag.  it just needs that one file to build the app.
 thru imports and exports, javascript will know how to build the files
 and webpack will know how to add them to one file.
 
+you set an input file. By default it is "index.js" in the source directory.
+This needs to be there for webpack to work.
+
+you get an output file: dist/main.js
+
+in the html file, you must , thru a <script> tag, point to the output file.
+src="./dist/main.js"
+
+* to add a hashtag to the file that is created
+see "cashing" first then plugins.  shows you how to create an index file
+where the name of the script file with the hashtag is attached to the name.
+
 
 
 1/ bundle code
@@ -49,7 +61,8 @@ Module not found: Error: Can't resolve './src' in 'C:\SoftwareProjects\git\perso
   8/ Mode is set to "production" by default so the minified file is
   impossible to understand.  to change this,
   add mode:"development"
-  in the webpack config file
+  in the webpack config file.
+  This makes the main.js output file a bit more easy to read.
 
   9/ to make it even more readable (git rid of "eval") set
   devtool (lowercase t) to none:
